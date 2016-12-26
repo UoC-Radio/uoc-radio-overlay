@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 IUSE="+a2jmidid +capture pulseaudio +ladish"
 #requires jack2, python3 for pyqt4 and dbus-python
 #ladish pulls from git to workaround 404 at ladish.org
-DEPEND="=media-sound/jack-audio-connection-kit*
+DEPEND="media-sound/jack-audio-connection-kit
    dev-python/PyQt4[examples]
    dev-python/dbus-python
    a2jmidid? ( media-sound/a2jmidid )
