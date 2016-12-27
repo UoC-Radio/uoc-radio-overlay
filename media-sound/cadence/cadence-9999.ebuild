@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Got this from https://linuxmusicians.com/viewtopic.php?p=66866
+# and modified it
 
 EAPI=5
 inherit git-r3
@@ -16,14 +17,12 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+a2jmidid +capture pulseaudio +ladish"
 #requires jack2, python3 for pyqt4 and dbus-python
-#ladish pulls from git to workaround 404 at ladish.org
-DEPEND="media-sound/jack-audio-connection-kit
+#ladish etc are not compile-time or runtime dependencies,
+#the apps will use them if they are present during runtime
+DEPEND="virtual/jack
    dev-python/PyQt4[examples]
    dev-python/dbus-python
-   a2jmidid? ( media-sound/a2jmidid )
-   capture? ( media-sound/jack_capture )
-   pulseaudio? ( media-sound/pulseaudio[jack] )
-   ladish? ( =media-sound/ladish-9999-r1 )"
+   pulseaudio? ( media-sound/pulseaudio[jack] )"
 RDEPEND=${DEPEND}
 
 src_compile() {
