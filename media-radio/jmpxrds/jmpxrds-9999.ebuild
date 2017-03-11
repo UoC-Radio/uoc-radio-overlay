@@ -16,7 +16,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="wave-table +rtp-server"
 DEPEND="virtual/jack
 	>=media-libs/soxr-0.1.1
-	rtp-server? ( >=media-libs/gst-plugins-good-1.0.0 )"
+	>=sci-libs/fftw-3.0.0
+	rtp-server? ( >=media-libs/gst-plugins-good-1.0.0
+		      media-plugins/gst-plugins-flac )"
 RDEPEND=${DEPEND}
 
 src_prepare() {
