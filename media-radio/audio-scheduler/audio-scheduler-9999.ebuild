@@ -13,10 +13,9 @@ EGIT_REPO_URI="https://github.com/UoC-Radio/audio-scheduler.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
-DEPEND=">=media-libs/gstreamer-1.0.0
-	>=media-libs/gst-plugins-good-1.0.0
-	>=media-libs/gst-plugins-bad-1.0.0
+IUSE="debug jack pulseaudio alsa flac opus vorbis aac mp3"
+DEPEND=">=media-libs/gst-plugins-meta-1.10.0[jack?,pulseaudio?,alsa?,flac?,opus?,vorbis?,aac?,mp3?]
+	>=media-libs/gst-plugins-bad-1.10.0
 	>=dev-libs/libxml2-2.9.0"
 RDEPEND=${DEPEND}
 
