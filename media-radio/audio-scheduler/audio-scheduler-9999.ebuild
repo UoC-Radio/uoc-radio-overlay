@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug jack pulseaudio alsa flac opus vorbis aac mp3"
-DEPEND=">=media-libs/gst-plugins-meta-1.10.0[jack?,pulseaudio?,alsa?,flac?,opus?,vorbis?,aac?,mp3?]
+DEPEND=">=media-plugins/gst-plugins-meta-1.10.0[jack?,pulseaudio?,alsa?,flac?,opus?,vorbis?,aac?,mp3?]
 	>=media-libs/gst-plugins-bad-1.10.0
 	>=dev-libs/libxml2-2.9.0"
 RDEPEND=${DEPEND}
