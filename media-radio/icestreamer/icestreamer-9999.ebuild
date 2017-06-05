@@ -13,9 +13,9 @@ EGIT_REPO_URI="https://github.com/UoC-Radio/icestreamer.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa jack pulseaudio ogg opus vorbis lame vpx"
+IUSE="alsa jack pulseaudio ogg opus vorbis lame"
 
-DEPEND=">=media-plugins/gst-plugins-meta-1.10.0[alsa?,jack?,pulseaudio?,ogg?,opus?,vorbis?,lame?,vpx?]
+DEPEND=">=media-plugins/gst-plugins-meta-1.10.0[alsa?,jack?,pulseaudio?,ogg?,opus?,vorbis?,lame?]
 	>=media-plugins/gst-plugins-shout2-1.10.0"
 RDEPEND=${DEPEND}
 
