@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repositories version="1.0">
+  <repo priority="50" quality="experimental" status="unofficial">
+    <name>uoc-radio</name>
+    <description>UoC Radio Gentoo Overlay</description>
+    <homepage>https://radio.uoc.gr</homepage>
+    <owner>
+      <email>radio-list@culture.uoc.gr</email>
+    </owner>
+    <source type="git">https://github.com/UoC-Radio/uoc-radio-overlay.git</source>
+  </repo>
+</repositories>
