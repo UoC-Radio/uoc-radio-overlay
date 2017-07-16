@@ -1,77 +1,53 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
-[[ "${PV}" = "2.9999" ]] && inherit git-r3
 inherit eutils python-single-r1 waf-utils multilib-minimal
 
 DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
 HOMEPAGE="http://jackaudio.org/"
 
-RESTRICT="mirror"
 if [[ "${PV}" = "2.9999" ]]; then
+	inherit git-r3
 	EGIT_REPO_URI="git://github.com/jackaudio/jack2.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://dl.dropbox.com/u/28869550/jack-${PV}.tar.bz2"
+	MY_PV="${PV/_rc/-RC}"
+	MY_P="${PN}-${MY_PV}"
+	S="${WORKDIR}/${MY_P}"
+	SRC_URI="https://github.com/jackaudio/jack2/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
 LICENSE="GPL-2"
-SLOT="0"
-IUSE="alsa celt dbus doc ieee1394 libsamplerate opus pam readline sndfile"
+SLOT="2"
+IUSE="alsa celt dbus doc opus pam classic sndfile libsamplerate readline"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-CDEPEND="${PYTHON_DEPS}
+CDEPEND="media-libs/libsamplerate
+	media-libs/libsndfile
+	sys-libs/readline:0=
+	${PYTHON_DEPS}
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	celt? ( media-libs/celt:0[${MULTILIB_USEDEP}] )
 	dbus? (
 		dev-libs/expat[${MULTILIB_USEDEP}]
 		sys-apps/dbus[${MULTILIB_USEDEP}]
 	)
-	ieee1394? ( media-libs/libffado[${MULTILIB_USEDEP}] )
-	libsamplerate? ( media-libs/libsamplerate[${MULTILIB_USEDEP}] )
-	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )
-	readline? ( sys-libs/readline:0 )
-	sndfile? ( media-libs/libsndfile )
-	abi_x86_32? ( !app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)] )"
-DEPEND="${CDEPEND}
+	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )"
+DEPEND="!media-sound/jack-audio-connection-kit:0
+	${CDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 RDEPEND="${CDEPEND}
 	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
 	pam? ( sys-auth/realtime-base )"
 
-[[ "${PV}" = "2.9999" ]] || S="${WORKDIR}/jack-${PV}"
-
 DOCS=( ChangeLog README README_NETJACK2 TODO )
-
-# USAGE: jack2_use <flag> [feature]
-jack2_use() {
-	echo "--${2:-${1}}=$(usex ${1})"
-}
-
-# USAGE: jack2_multilib_native_use <flag> [feature]
-jack2_multilib_native_use() {
-	if multilib_is_native_abi; then
-		jack2_use "${@}"
-	else
-		echo "--${2:-${1}}=no"
-	fi
-}
-
-src_unpack() {
-	if [[ "${PV}" = "2.9999" ]]; then
-		git-r3_src_unpack
-	else
-		default
-	fi
-}
 
 src_prepare() {
 	default
@@ -80,23 +56,24 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mywafconfargs=(
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
+		--htmldir=/usr/share/doc/${PF}/html
+		$(usex dbus --dbus "")
+		$(usex classic --classic "")
+		--alsa=$(usex alsa yes no)
+		--celt=$(usex celt yes no)
+		--doxygen=$(multilib_native_usex doc yes no)
+		--firewire=no
 		--freebob=no
 		--iio=no
+		--opus=$(usex opus yes no)
 		--portaudio=no
+		--readline=$(multilib_native_usex readline yes no)
+		--samplerate=$(multilib_native_usex libsamplerate yes no)
+		--sndfile=$(multilib_native_usex sndfile yes no)
 		--winmme=no
-		$(jack2_use alsa)
-		$(jack2_use celt)
-		$(usex dbus --dbus --classic)
-		$(jack2_multilib_native_use doc doxygen)
-		$(jack2_use ieee1394 firewire)
-		$(jack2_use libsamplerate samplerate)
-		$(jack2_use opus)
-		$(jack2_multilib_native_use readline)
-		$(jack2_multilib_native_use sndfile)
 	)
 
-	WAF_BINARY="${BUILD_DIR}"/waf waf-utils_src_configure ${mywafconfargs[@]}
+	waf-utils_src_configure ${mywafconfargs[@]}
 }
 
 multilib_src_compile() {

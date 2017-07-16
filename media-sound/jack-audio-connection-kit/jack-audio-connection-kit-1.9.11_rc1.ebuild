@@ -1,105 +1,87 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
-inherit eutils python-single-r1 waf-utils multilib-minimal linux-info
-if [[ ${PV} = *9999* ]]; then
+inherit eutils python-single-r1 waf-utils multilib-minimal
+
+DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
+HOMEPAGE="http://jackaudio.org/"
+
+if [[ "${PV}" = "2.9999" ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/jackaudio/jack2.git"
+	EGIT_REPO_URI="git://github.com/jackaudio/jack2.git"
+	KEYWORDS=""
 else
-	inherit vcs-snapshot
-	MY_PV="${PV/_/-}"
-	MY_PV="v${MY_PV^^}"
-	[[ -z ${PV%%*_p*} ]] && MY_PV="2d1d323"
-	SRC_URI="mirror://githubcl/jackaudio/jack2/tar.gz/${MY_PV} -> ${P}.tar.gz"
-	RESTRICT="primaryuri"
-	KEYWORDS="~amd64 ~x86"
+	MY_PV="${PV/_rc/-RC}"
+	MY_P="${PN}-${MY_PV}"
+	S="${WORKDIR}/${MY_P}"
+	SRC_URI="https://github.com/jackaudio/jack2/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
-DESCRIPTION="A low-latency audio server"
-HOMEPAGE="http://www.jackaudio.org"
-
 LICENSE="GPL-2"
-SLOT="0"
-IUSE="alsa celt classic dbus debug apidocs +examples libsamplerate opus pam readline sndfile"
+SLOT="2"
+IUSE="alsa celt dbus doc opus pam classic sndfile libsamplerate readline"
 
-REQUIRED_USE="
-	|| ( classic dbus )
-	${PYTHON_REQUIRED_USE}
-"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="
+CDEPEND="media-libs/libsamplerate
+	media-libs/libsndfile
+	sys-libs/readline:0=
 	${PYTHON_DEPS}
-	celt? ( media-libs/celt:0[${MULTILIB_USEDEP}] )
-	opus? ( media-libs/opus[${MULTILIB_USEDEP},custom-modes] )
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
+	celt? ( media-libs/celt:0[${MULTILIB_USEDEP}] )
 	dbus? (
 		dev-libs/expat[${MULTILIB_USEDEP}]
 		sys-apps/dbus[${MULTILIB_USEDEP}]
 	)
-	examples? (
-		sndfile? ( media-libs/libsndfile[${MULTILIB_USEDEP}] )
-		libsamplerate? ( media-libs/libsamplerate[${MULTILIB_USEDEP}] )
-		readline? ( sys-libs/readline:0[${MULTILIB_USEDEP}] )
-	)
-"
-RDEPEND="
-	${DEPEND}
-	alsa? ( sys-process/lsof )
-	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
-	pam? ( sys-auth/realtime-base )
-"
-DEPEND="
-	${DEPEND}
+	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )"
+DEPEND="!media-sound/jack-audio-connection-kit:0
+	${CDEPEND}
 	virtual/pkgconfig
-	apidocs? ( app-doc/doxygen )
-"
-DOCS=( ChangeLog README README_NETJACK2 TODO )
-CONFIG_CHECK="~!GRKERNSEC_HARDEN_IPC"
+	doc? ( app-doc/doxygen )"
+RDEPEND="${CDEPEND}
+	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
+	pam? ( sys-auth/realtime-base )"
 
-pkg_setup() {
-	python-single-r1_pkg_setup
-	linux-info_pkg_setup
-}
+DOCS=( ChangeLog README README_NETJACK2 TODO )
 
 src_prepare() {
-	use examples || sed \
-		-e '/example-clients/s:bld\.recurse:print:' \
-		-i wscript
 	default
 	multilib_copy_sources
 }
 
 multilib_src_configure() {
 	local mywafconfargs=(
-		--htmldir="/usr/share/doc/${PF}/html"
+		--htmldir=/usr/share/doc/${PF}/html
 		$(usex dbus --dbus "")
 		$(usex classic --classic "")
-		$(usex debug --debug "")
-		--doxygen=$(multilib_native_usex apidocs)
-		--alsa=$(usex alsa)
-		--celt=$(usex celt)
-		--opus=$(usex opus)
-		--samplerate=$(usex libsamplerate)
-		--sndfile=$(usex sndfile)
-		--readline=$(usex readline)
+		--alsa=$(usex alsa yes no)
+		--celt=$(usex celt yes no)
+		--doxygen=$(multilib_native_usex doc yes no)
+		--firewire=no
+		--freebob=no
+		--iio=no
+		--opus=$(usex opus yes no)
+		--portaudio=no
+		--readline=$(multilib_native_usex readline yes no)
+		--samplerate=$(multilib_native_usex libsamplerate yes no)
+		--sndfile=$(multilib_native_usex sndfile yes no)
+		--winmme=no
 	)
 
-	WAF_BINARY="${BUILD_DIR}/waf" \
-		waf-utils_src_configure ${mywafconfargs[@]}
+	waf-utils_src_configure ${mywafconfargs[@]}
 }
 
 multilib_src_compile() {
-	WAF_BINARY="${BUILD_DIR}/waf" \
-		waf-utils_src_compile
+	WAF_BINARY="${BUILD_DIR}"/waf waf-utils_src_compile
 }
 
 multilib_src_install() {
-	WAF_BINARY="${BUILD_DIR}"/waf \
-		waf-utils_src_install
+	WAF_BINARY="${BUILD_DIR}"/waf waf-utils_src_install
 }
 
 multilib_src_install_all() {
