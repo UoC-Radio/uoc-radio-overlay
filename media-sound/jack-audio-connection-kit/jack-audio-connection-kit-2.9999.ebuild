@@ -15,10 +15,9 @@ if [[ "${PV}" = "2.9999" ]]; then
 	EGIT_REPO_URI="git://github.com/jackaudio/jack2.git"
 	KEYWORDS=""
 else
-	MY_PV="${PV/_rc/-RC}"
-	MY_P="${PN}-${MY_PV}"
-	S="${WORKDIR}/${MY_P}"
-	SRC_URI="https://github.com/jackaudio/jack2/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+	inherit git-r3
+	EGIT_REPO_URI="git://github.com/jackaudio/jack2.git"
+	EGIT_COMMIT="v$(echo ${PVR} | tr _ - | tr '[:lower:]' '[:upper:]')"
 	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
