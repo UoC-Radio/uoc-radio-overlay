@@ -10,16 +10,9 @@ inherit eutils python-single-r1 waf-utils multilib-minimal
 DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
 HOMEPAGE="http://jackaudio.org/"
 
-if [[ "${PV}" = "2.9999" ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="git://github.com/jackaudio/jack2.git"
-	KEYWORDS=""
-else
-	inherit git-r3
-	EGIT_REPO_URI="git://github.com/jackaudio/jack2.git"
-	EGIT_COMMIT="v$(echo ${PVR} | tr _ - | tr '[:lower:]' '[:upper:]')"
-	KEYWORDS="~amd64 ~ppc ~x86"
-fi
+inherit git-r3
+EGIT_REPO_URI="git://github.com/jackaudio/jack2.git"
+KEYWORDS=""
 
 LICENSE="GPL-2"
 SLOT="2"
