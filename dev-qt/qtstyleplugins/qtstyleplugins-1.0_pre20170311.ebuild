@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2017-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ EGIT_COMMIT="335dbece103e2cbf6c7cf819ab6672c2956b17b3"
 
 LICENSE="LGPL-2"
 SLOT="5"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	x11-libs/gtk+:2

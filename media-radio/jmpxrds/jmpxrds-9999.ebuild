@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 2017-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ DEPEND="virtual/jack
 	>=media-libs/soxr-0.1.1
 	>=sci-libs/fftw-3.0.0
 	rtp-server? ( >=media-libs/gst-plugins-good-1.0.0
-		      media-plugins/gst-plugins-flac )"
+		      media-plugins/gst-plugins-flac:* )"
 RDEPEND=${DEPEND}
 
 src_prepare() {
@@ -26,15 +26,13 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with rtp-server)\
-		$(use_with wave-table)
+	econf $(use_with rtp-server) $(use_with wave-table)
 }
 
 src_compile() {
-   emake
+	emake
 }
 
 src_install() {
-   emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 }
-

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">UoC-Radio/icestreamer</remote-id>
+		<bugs-to>https://github.com/UoC-Radio/icestreamer/issues</bugs-to>
+	</upstream>
+	<longdescription>
+		A simple live audio streamer, intended as a replacement for DarkIce.
+
+		IceStreamer supports only a single input source, which it can encode
+		to multiple formats, in parallel, and send to multiple servers. It
+		aims to cover the simple usecase of streaming audio for a web radio 
+		station.
+	</longdescription>
+</pkgmetadata>

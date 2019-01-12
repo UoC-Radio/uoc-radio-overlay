@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">UoC-Radio/audio-coffin</remote-id>
+		<bugs-to>https://github.com/UoC-Radio/audio-coffin/issues</bugs-to>
+	</upstream>
+	<longdescription>
+		A simple audio recorder/logger on top of Jack, libsndfile and libsoxr
+	</longdescription>
+</pkgmetadata>

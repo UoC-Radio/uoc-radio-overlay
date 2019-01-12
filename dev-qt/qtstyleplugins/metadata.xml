@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <longdescription lang="en">
+    Qt 5 extra widget styles
+
+    - Cleanlooks
+    - Motif
+    - Plastique
+    - GTK+ 2
+
+    It also provides the GTK+ 2 platformtheme, which you would likely
+    want to use if you want the GTK+ 2 style. Export QT_QPA_PLATFORMTHEME=gtk2
+    to enable it for all Qt applications. 
+  </longdescription>
+</pkgmetadata>

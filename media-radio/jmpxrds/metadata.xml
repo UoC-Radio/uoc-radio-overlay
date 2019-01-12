@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">UoC-Radio/JMPXRDS</remote-id>
+		<bugs-to>https://github.com/UoC-Radio/JMPXRDS/issues</bugs-to>
+	</upstream>
+	<longdescription>
+		An FM MPX signal generator on top of Jack Audio Connection Kit with
+		support for:
+
+		Multiple SSB modulators for the stereo subchannel (L-R)
+		RDS Encoder with support for all basic fields
+		Built-in RTP server for sending the generated signal on a remote site
+	</longdescription>
+	<use>
+		<flag name="wave-table">Use a wave table for the oscilators</flag>
+		<flag name="rtp-server">Enable support for the integrated rtp-server</flag>
+	</use>
+</pkgmetadata>
