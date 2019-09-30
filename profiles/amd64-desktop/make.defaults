@@ -1,0 +1,21 @@
+# Distro stuff
+USE="${USE} bindist unicode"
+# Desktop environment
+USE="${USE} -kde wayland -gnome-online-accounts networkmanager infinality fontconfig ibus"
+# Browser stuff
+USE="${USE} mozilla nsplugin -webkit"
+# Audio
+USE="${USE} jack"
+# Graphics (enable gtk2/qt5 per package)
+USE="${USE} vdpau vaapi opengl -qt4 -qt5 -gtk2"
+# Other media
+USE="${USE} gstreamer fftw"
+# Security stuff
+USE="${USE} caps filecaps acl -suid cacert ssl tls -skey"
+
+VIDEO_CARDS="amdgpu fbdev i915 i965 intel nouveau radeon radeonsi r600 r300 qxl virgl"
+INPUT_DEVICES="keyboard libinput mouse evdev"
+
+CPU_FLAGS_X86="mmx mmxext sse sse2 sse3 ssse3 sse4_1 sse4_2"
+
+L10N="en en_GB el"

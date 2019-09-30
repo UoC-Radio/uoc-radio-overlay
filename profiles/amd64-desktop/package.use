@@ -1,0 +1,117 @@
+# Enable libxml2 python bindings
+dev-libs/libxml2 python
+
+# Enable python bindings for git
+dev-vcs/git python -perl
+
+# Build the client part of samba (needed for cups)
+# try to keep things clean, no need for python bindings
+# also remove fam.
+net-fs/samba client -python -fam
+sys-libs/ldb -python
+
+# Also brings in gamin (fam), glib will use inotify
+dev-libs/glib -fam
+
+# Brings in webkit-gtk
+gnome-base/nautilus -previewer
+
+# Enable vulkan support for mesa
+media-libs/mesa vulkan
+
+# Desktop environment theme
+x11-themes/gtk-engines-murrine -themes
+x11-themes/vertex-theme gnome-shell
+
+# Needed for wayland
+media-libs/libsdl2 gles kms
+
+# Keep things clean when installing mozilla apps
+mail-client/thunderbird system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite
+www-client/firefox system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite hwaccel
+dev-db/sqlite secure-delete
+media-libs/libvpx postproc
+dev-lang/rust system-llvm
+
+# It needs OpenSSL without the bindist flag which breaks other stuff
+net-libs/nodejs -ssl -npm
+net-libs/nghttp2 -cxx
+
+# Enable cpudetection and extra codecs
+media-video/ffmpeg cpudetection openssl opus vpx webp x265 opus theora speex libsoxr gmp cdio gnutls bluray ladspa modplug wavpack
+
+# Wireless extensions are obsolete
+net-misc/networkmanager -wext
+
+# Brings in gtk2 for no reason
+net-dialup/ppp -gtk
+
+# Disable javascript support for security reasons
+app-text/mupdf -javascript
+
+# Needed by vlc
+sys-libs/zlib minizip
+
+# Use ffmpeg for extra codecs
+media-sound/mixxx ffmpeg -mp3 -mp4 -aac
+
+# Needed by mixxx
+dev-qt/qtscript scripttools
+
+# Keep only jack
+media-libs/portaudio -alsa
+
+# Qmmp
+media-sound/qmmp ffmpeg qsui soxr
+
+# Audacious use ffmpeg backend and lame, drop mpg123
+media-sound/audacious qt5
+media-plugins/audacious-plugins ffmpeg -mp3 lame cue soxr fluidsynth qt5 mms libsamplerate
+
+# VLC, use ffmpeg, soxr
+media-video/vlc -libsamplerate -mp3 -mad -x264 qt5 bluray soxr cddb ffmpeg skins fluidsynth
+
+# Audio-scheduler
+media-radio/audio-scheduler -aac
+
+# Gstreamer plugins, use ffmpeg
+media-plugins/gst-plugins-meta -a52 -cdda -dts -dvd -x264 -mpeg ffmpeg opus lame
+
+# Icestreamer
+media-radio/icestreamer opus lame
+
+# Calf
+media-plugins/calf lv2
+
+# Carla
+media-sound/carla ffmpeg
+
+# Picard dependencies
+dev-qt/qtgui accessibility
+dev-python/PyQt5 declarative -printsupport -bluetooth
+
+# Enable ffmpeg support for audacity
+media-sound/audacity ffmpeg
+
+# We want fpcalc from chromaprint
+media-libs/chromaprint tools
+
+# LMMS
+media-sound/lmms fluidsynth -portaudio
+media-libs/sdl-sound -mpeg
+
+# VLC support on libreoffice
+app-office/libreoffice vlc
+
+# Signature support for PDFs on poppler
+app-text/poppler nss
+
+dev-libs/boost python
+net-libs/libtorrent-rasterbar python
+net-p2p/deluge webinterface
+sci-libs/fftw threads
+media-video/mediainfo -wxwidgets
+app-arch/libarchive lz4 lzo zstd nettle expat
+app-text/evince djvu dvi postscript -spell
+app-misc/tracker-miners cue
+net-wireless/bluez -mesh

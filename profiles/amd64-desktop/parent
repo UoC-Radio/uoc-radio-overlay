@@ -1,0 +1,3 @@
+gentoo:default/linux/amd64/17.0/no-multilib
+gentoo:targets/desktop/gnome
+gentoo:targets/systemd

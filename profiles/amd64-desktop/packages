@@ -1,0 +1,11 @@
+*gnome-base/gnome-light
+*sys-apps/pciutils
+*sys-apps/usbutils
+*media-fonts/infinality-ultimate-meta
+*x11-themes/vertex-theme
+*media-sound/qjackctl
+*dev-qt/qtstyleplugins
+*x11-themes/vertex-icon-theme
+*www-client/firefox
+*media-sound/patchage
+*sys-auth/rtkit
