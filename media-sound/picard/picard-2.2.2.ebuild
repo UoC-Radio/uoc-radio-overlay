@@ -6,11 +6,11 @@ EAPI=6
 PYTHON_COMPAT=( python3_{5,6,7} )
 DISTUTILS_SINGLE_IMPL=1
 DISABLE_AUTOFORMATTING=true
-inherit distutils-r1 gnome2-utils readme.gentoo-r1 xdg-utils
-
+inherit distutils-r1 gnome2-utils readme.gentoo-r1 xdg-utils git-r3
 DESCRIPTION="Cross-platform music tagger"
 HOMEPAGE="https://picard.musicbrainz.org"
-SRC_URI="https://musicbrainz.osuosl.org/pub/musicbrainz/${PN}/${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/metabrainz/picard.git"
+EGIT_COMMIT="release-2.2.2"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -26,8 +26,6 @@ DEPEND="
 "
 
 RESTRICT="test" # doesn't work with ebuilds
-
-S="${WORKDIR}/${PN}-release-${PV}"
 
 python_compile() {
 	local build_args=(
