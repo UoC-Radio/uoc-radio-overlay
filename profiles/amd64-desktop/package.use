@@ -110,6 +110,12 @@ app-text/poppler nss
 net-misc/vino -telepathy
 net-misc/vinagre -telepathy
 
+# Needed by sssd
+net-nds/openldap sasl
+net-dns/bind-tools gssapi
+dev-libs/cyrus-sasl kerberos
+sys-libs/glibc nscd
+
 dev-libs/boost python
 net-libs/libtorrent-rasterbar python
 net-p2p/deluge webinterface
