@@ -106,6 +106,10 @@ app-office/libreoffice vlc
 # Signature support for PDFs on poppler
 app-text/poppler nss
 
+# Get rid of telepathy dependency for remote desktop
+net-misc/vino -telepathy
+net-misc/vinagre -telepathy
+
 dev-libs/boost python
 net-libs/libtorrent-rasterbar python
 net-p2p/deluge webinterface
