@@ -18,4 +18,4 @@ media-sound/audacious ~amd64
 media-plugins/audacious-plugins ~amd64
 media-sound/jack2 ~amd64
 media-plugins/calf **
-media-sound/carla **
+media-sound/qjackctl ~amd64

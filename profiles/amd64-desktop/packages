@@ -26,8 +26,8 @@
 *net-misc/vino
 *net-misc/vinagre
 *media-sound/alsa-utils
+*media-sound/jack2
 *media-sound/qjackctl
-*media-sound/patchage
 *app-editors/gedit
 *app-text/evince
 *media-gfx/gnome-screenshot
