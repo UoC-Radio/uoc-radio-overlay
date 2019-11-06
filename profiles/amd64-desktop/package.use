@@ -37,6 +37,9 @@ dev-lang/rust system-llvm
 net-libs/nodejs -ssl -npm
 net-libs/nghttp2 -cxx
 
+# Enable utils flag on nss so that libreswan can use it
+dev-libs/nss utils
+
 # Enable cpudetection and extra codecs
 media-video/ffmpeg cpudetection openssl opus vpx webp x265 opus theora speex libsoxr gmp cdio gnutls bluray ladspa modplug wavpack
 
