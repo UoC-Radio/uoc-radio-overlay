@@ -1,4 +1,5 @@
 *acct-user/studiouser
+*app-portage/layman
 *app-portage/eix
 *app-portage/gentoolkit
 *sys-kernel/linux-firmware
@@ -11,6 +12,7 @@
 *sys-process/htop
 *sys-apps/irqbalance
 *sys-auth/rtkit
+*sys-fs/dosfstools
 *sys-fs/ntfs3g
 *sys-fs/fuse-exfat
 *sys-fs/exfat-utils
