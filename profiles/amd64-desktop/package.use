@@ -64,6 +64,9 @@ dev-qt/qtscript scripttools
 # Keep only jack
 media-libs/portaudio -alsa
 
+# Add ffado support on jack
+media-sound/jack2 ieee1394
+
 # Qmmp
 media-sound/qmmp ffmpeg qsui soxr
 
@@ -85,9 +88,6 @@ media-radio/icestreamer opus lame
 
 # Calf
 media-plugins/calf lv2
-
-# Carla
-media-sound/carla ffmpeg
 
 # Picard dependencies
 dev-qt/qtgui accessibility
