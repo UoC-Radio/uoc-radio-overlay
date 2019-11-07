@@ -40,5 +40,4 @@
 *gnome-extra/gnome-tweaks
 *media-fonts/infinality-ultimate-meta
 *x11-themes/vertex-theme
-*dev-qt/qtstyleplugins
-*x11-themes/vertex-icon-theme
+*x11-themes/adwaita-qt

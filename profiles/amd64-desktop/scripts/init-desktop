@@ -1,16 +1,17 @@
-echo "QT_QPA_PLATFORMTHEME=gtk2" >> /etc/env.d/99qtstyleplugins
+if [[ $(id -u) == 0 ]]; then
+	echo "QT_STYLE_OVERRIDE=adwaita-dark" >> /etc/env.d/99qtstyle
+	echo "QT_QPA_PLATFORM=wayland-egl" >> /etc/env.d/99qtstyle
 
-for i in `eselect fontconfig list | grep '*' | awk -F "]" '{print $1}' | awk -F "[" '{print $2}'`; do
-	eselect fontconfig disable $i;
-done
+	for i in `eselect fontconfig list | grep '*' | awk -F "]" '{print $1}' | awk -F "[" '{print $2}'`; do
+		eselect fontconfig disable $i;
+	done
 
-eselect fontconfig enable 52-infinality.conf
-eselect infinality set ultimate-combi
-eselect lcdfilter set ultimate
-env-update
+	eselect fontconfig enable 52-infinality.conf
+	eselect infinality set ultimate-combi
+	eselect lcdfilter set ultimate
+	env-update
+fi
 
-
-gsettings set org.gnome.desktop.interface icon-theme 'Vertex'
 gsettings set org.gnome.desktop.interface gtk-theme 'Vertex-Dark'
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 
