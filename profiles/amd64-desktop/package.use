@@ -10,6 +10,9 @@ dev-vcs/git python -perl
 net-fs/samba client -python -fam
 sys-libs/ldb -python
 
+# Add samba / fuse support to gvfs
+gnome-base/gvfs samba fuse
+
 # Also brings in gamin (fam), glib will use inotify
 dev-libs/glib -fam
 
@@ -27,8 +30,8 @@ x11-themes/vertex-theme gnome-shell
 media-libs/libsdl2 gles kms
 
 # Keep things clean when installing mozilla apps
-mail-client/thunderbird system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite
-www-client/firefox system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite hwaccel
+mail-client/thunderbird system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite lto
+www-client/firefox system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite hwaccel lto
 dev-db/sqlite secure-delete
 media-libs/libvpx postproc
 dev-lang/rust system-llvm
