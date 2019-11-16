@@ -75,7 +75,7 @@ media-sound/qmmp ffmpeg qsui soxr
 
 # Audacious use ffmpeg backend and lame, drop mpg123
 media-sound/audacious qt5
-media-plugins/audacious-plugins ffmpeg -mp3 lame cue soxr fluidsynth qt5 mms libsamplerate
+media-plugins/audacious-plugins ffmpeg -mp3 lame cue soxr fluidsynth qt5 mms libsamplerate http
 
 # VLC, use ffmpeg, soxr
 media-video/vlc -libsamplerate -mp3 -mad -x264 qt5 bluray soxr cddb ffmpeg skins fluidsynth
