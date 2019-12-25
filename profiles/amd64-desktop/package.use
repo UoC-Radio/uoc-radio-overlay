@@ -2,7 +2,8 @@
 dev-libs/libxml2 python
 
 # Enable python bindings for git
-dev-vcs/git python -perl
+# and perl for send-email
+dev-vcs/git python perl
 
 # Build the client part of samba (needed for cups)
 # try to keep things clean, no need for python bindings
