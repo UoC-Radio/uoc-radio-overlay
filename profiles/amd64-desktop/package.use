@@ -132,3 +132,4 @@ app-arch/libarchive lz4 lzo zstd nettle expat
 app-text/evince djvu dvi postscript -spell
 app-misc/tracker-miners cue
 net-wireless/bluez -mesh
+sys-fs/quota rpc
