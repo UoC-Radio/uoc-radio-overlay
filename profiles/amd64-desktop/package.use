@@ -123,6 +123,12 @@ net-dns/bind-tools gssapi
 dev-libs/cyrus-sasl kerberos
 sys-libs/glibc nscd
 
+# libvirt stuff
+app-emulation/libvirt nfs virt-network fuse
+app-emulation/qemu spice usbredir vde virgl virtfs
+net-misc/spice-gtk usbredir
+net-dns/dnsmasq script
+
 dev-libs/boost python
 net-libs/libtorrent-rasterbar python
 net-p2p/deluge webinterface
