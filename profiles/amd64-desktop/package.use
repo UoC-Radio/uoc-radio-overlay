@@ -95,7 +95,8 @@ media-plugins/calf lv2
 
 # Picard dependencies
 dev-qt/qtgui accessibility
-dev-python/PyQt5 declarative -printsupport -bluetooth
+dev-qt/qtmultimedia widgets
+dev-python/PyQt5 declarative -printsupport -bluetooth multimedia
 
 # Enable ffmpeg support for audacity
 media-sound/audacity ffmpeg
