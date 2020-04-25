@@ -38,7 +38,7 @@ media-libs/libvpx postproc
 dev-lang/rust system-llvm
 
 # It needs OpenSSL without the bindist flag which breaks other stuff
-net-libs/nodejs -ssl -npm
+net-libs/nodejs system-ssl ssl -npm
 net-libs/nghttp2 -cxx
 
 # Enable utils flag on nss so that libreswan can use it
