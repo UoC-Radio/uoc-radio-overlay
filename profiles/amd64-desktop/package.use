@@ -65,9 +65,6 @@ media-sound/mixxx ffmpeg -mp3 -mp4 -aac
 # Needed by mixxx
 dev-qt/qtscript scripttools
 
-# Keep only jack
-media-libs/portaudio -alsa
-
 # Add ffado support on jack
 media-sound/jack2 ieee1394
 
