@@ -21,3 +21,4 @@ media-plugins/calf **
 media-sound/qjackctl ~amd64
 dev-libs/dbus-c++ ~amd64
 media-libs/libffado ~amd64
+media-sound/picard ~amd64
