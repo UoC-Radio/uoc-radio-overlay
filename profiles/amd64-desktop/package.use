@@ -24,8 +24,8 @@ gnome-base/nautilus -previewer
 x11-themes/gtk-engines-murrine -themes
 x11-themes/vertex-theme gnome-shell
 
-# Needed for wayland
-media-libs/libsdl2 gles2 kms
+# Needed for wayland / wine
+media-libs/libsdl2 gles2 kms haptic
 
 # Keep things clean when installing mozilla apps
 mail-client/thunderbird system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite lto
