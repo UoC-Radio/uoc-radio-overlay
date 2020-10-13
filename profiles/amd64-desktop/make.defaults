@@ -7,7 +7,7 @@ USE="${USE} mozilla nsplugin -webkit"
 # Audio
 USE="${USE} jack"
 # Graphics (enable gtk2/qt5 per package)
-USE="${USE} vdpau vaapi opengl -qt4 -qt5 -gtk2"
+USE="${USE} vdpau vaapi opengl vulkan -qt4 -qt5 -gtk2"
 # Other media
 USE="${USE} gstreamer fftw"
 # Security stuff
