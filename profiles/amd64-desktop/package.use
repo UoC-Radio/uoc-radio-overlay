@@ -20,15 +20,12 @@ dev-libs/glib -fam
 # Brings in webkit-gtk
 gnome-base/nautilus -previewer
 
-# Enable vulkan support for mesa
-media-libs/mesa vulkan
-
 # Desktop environment theme
 x11-themes/gtk-engines-murrine -themes
 x11-themes/vertex-theme gnome-shell
 
-# Needed for wayland, also add vulkan
-media-libs/libsdl2 gles2 kms vulkan
+# Needed for wayland
+media-libs/libsdl2 gles2 kms
 
 # Keep things clean when installing mozilla apps
 mail-client/thunderbird system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite lto
