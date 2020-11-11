@@ -50,9 +50,6 @@ net-misc/networkmanager -wext
 # Brings in gtk2 for no reason
 net-dialup/ppp -gtk
 
-# Disable javascript support for security reasons
-app-text/mupdf -javascript
-
 # Needed by vlc
 sys-libs/zlib minizip
 
