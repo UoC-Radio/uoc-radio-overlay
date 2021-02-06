@@ -1,1 +1,1 @@
->=media-libs/libshout-2.4.5
+>=media-libs/libshout-2.4.2
