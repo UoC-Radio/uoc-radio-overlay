@@ -24,8 +24,14 @@ gnome-base/nautilus -previewer
 x11-themes/gtk-engines-murrine -themes
 x11-themes/vertex-theme gnome-shell
 
+# Needed for libappindicator
+dev-libs/libdbusmenu gtk3
+
 # Needed for wayland / wine
 media-libs/libsdl2 gles2 kms haptic
+
+# Needed for flatpack
+dev-util/ostree curl
 
 # Keep things clean when installing mozilla apps
 mail-client/thunderbird system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite lto
