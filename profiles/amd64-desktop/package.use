@@ -23,6 +23,7 @@ gnome-base/nautilus -previewer
 # Desktop environment theme
 x11-themes/gtk-engines-murrine -themes
 x11-themes/vertex-theme gnome-shell
+media-libs/freetype infinality
 
 # Needed for libappindicator
 dev-libs/libdbusmenu gtk3
