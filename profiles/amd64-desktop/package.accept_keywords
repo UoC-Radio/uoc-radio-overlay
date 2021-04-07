@@ -1,7 +1,6 @@
 media-libs/fontconfig-ultimate ~amd64
 dev-qt/qtstyleplugins ~amd64
 media-fonts/heuristica ~amd64
-media-fonts/infinality-ultimate-meta ~amd64
 media-fonts/courier-prime ~amd64
 media-fonts/signika ~amd64
 media-sound/audio-coffin ~amd64

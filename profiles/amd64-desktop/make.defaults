@@ -1,7 +1,7 @@
 # Distro stuff
 USE="${USE} bindist unicode"
 # Desktop environment
-USE="${USE} -kde wayland -gnome-online-accounts networkmanager infinality fontconfig ibus"
+USE="${USE} -kde wayland -gnome-online-accounts networkmanager fontconfig ibus"
 # Browser stuff
 USE="${USE} mozilla nsplugin -webkit"
 # Audio
