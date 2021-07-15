@@ -33,6 +33,9 @@ media-libs/libsdl2 gles2 kms haptic
 # Needed for flatpack
 dev-util/ostree curl
 
+# Needed for pango/ardour
+media-libs/freetype harfbuzz
+
 # Keep things clean when installing mozilla apps
 mail-client/thunderbird system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite lto
 www-client/firefox system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite hwaccel lto
