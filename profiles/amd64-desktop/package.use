@@ -11,6 +11,9 @@ dev-vcs/git python perl
 net-fs/samba client -python -fam
 sys-libs/ldb -python
 
+# Build su with suid bit
+sys-apps/util-linux suid
+
 # Add samba / fuse support to gvfs
 gnome-base/gvfs samba fuse
 
