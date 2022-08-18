@@ -22,17 +22,10 @@ DEPEND="virtual/jack
 RDEPEND=${DEPEND}
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
 src_configure() {
 	econf $(use_with rtp-server) $(use_with wave-table)
-}
-
-src_compile() {
-	emake
-}
-
-src_install() {
-	emake DESTDIR="${D}" install
 }

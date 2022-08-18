@@ -19,13 +19,6 @@ DEPEND="virtual/jack
 RDEPEND=${DEPEND}
 
 src_prepare() {
+	default
 	eautoreconf
-}
-
-src_compile() {
-	emake
-}
-
-src_install() {
-	emake DESTDIR="${D}" install
 }

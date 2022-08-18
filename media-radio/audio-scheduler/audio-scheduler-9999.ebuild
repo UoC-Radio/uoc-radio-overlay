@@ -20,17 +20,10 @@ DEPEND=">=media-plugins/gst-plugins-meta-1.10.0[jack?,pulseaudio?,alsa?,flac?,op
 RDEPEND=${DEPEND}
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
 src_configure() {
 	econf $(use_with debug)
-}
-
-src_compile() {
-	emake
-}
-
-src_install() {
-	emake DESTDIR="${D}" install
 }
