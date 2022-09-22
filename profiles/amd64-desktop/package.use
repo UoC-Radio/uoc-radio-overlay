@@ -136,6 +136,9 @@ net-dns/dnsmasq script
 # Enable the broadway backend for GTK
 x11-libs/gtk+ broadway
 
+# Needed by ardour
+media-libs/suil gtk2
+
 dev-libs/boost python
 net-libs/libtorrent-rasterbar python
 net-p2p/deluge webinterface
