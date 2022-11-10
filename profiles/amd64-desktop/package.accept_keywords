@@ -16,6 +16,7 @@ media-sound/mpck ~amd64
 media-sound/audacious ~amd64
 media-plugins/audacious-plugins ~amd64
 media-sound/jack2 ~amd64
+media-sound/jack-example-tools ~amd64
 media-plugins/calf **
 media-sound/qjackctl ~amd64
 dev-libs/dbus-c++ ~amd64
