@@ -74,6 +74,9 @@ dev-qt/qtscript scripttools
 # Add ffado support on jack
 media-sound/jack2 ieee1394
 
+# Build some extra jack clients to use/experiment with
+media-sound/jack-example-tools alsa jack-net jack-netsource zalsa opus
+
 # Qmmp
 media-sound/qmmp ffmpeg qsui soxr
 
