@@ -1,3 +1,6 @@
+# Add EFI support on systemd
+sys-apps/systemd gnuefi
+
 # Enable libxml2 python bindings
 dev-libs/libxml2 python
 
