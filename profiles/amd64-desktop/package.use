@@ -71,11 +71,14 @@ media-sound/mixxx ffmpeg -mp3 -mp4 -aac
 # Needed by mixxx
 dev-qt/qtscript scripttools
 
-# Add ffado support on jack
-media-sound/jack2 ieee1394
+# Add ffado support on jack, also libsamplerate is needed for example-tools
+media-sound/jack2 ieee1394 libsamplerate
 
 # Build some extra jack clients to use/experiment with
 media-sound/jack-example-tools alsa jack-net jack-netsource zalsa opus
+
+# Goes together with the opus use flag above
+media-libs/opus custom-modes
 
 # Qmmp
 media-sound/qmmp ffmpeg qsui soxr
