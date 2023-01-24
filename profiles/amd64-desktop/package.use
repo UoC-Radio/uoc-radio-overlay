@@ -162,3 +162,5 @@ app-misc/tracker-miners cue
 net-wireless/bluez -mesh
 sys-fs/quota rpc
 dev-libs/libical vala
+dev-python/pillow webp
+dev-python/numpy lapack
