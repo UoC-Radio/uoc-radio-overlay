@@ -22,3 +22,6 @@ media-sound/qjackctl ~amd64
 dev-libs/dbus-c++ ~amd64
 media-libs/libffado ~amd64
 media-sound/picard ~amd64
+net-wireless/gr-rds **
+net-wireless/gnuradio **
+sci-libs/volk **
