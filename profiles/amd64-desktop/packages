@@ -1,5 +1,6 @@
 *acct-user/studiouser
-*app-portage/layman
+*dev-vcs/git
+*app-eselect/eselect-repository
 *app-portage/eix
 *app-portage/gentoolkit
 *sys-kernel/linux-firmware
@@ -24,6 +25,7 @@
 *gnome-base/gnome-light
 *sys-apps/gnome-disk-utility
 *gnome-extra/gnome-system-monitor
+*gnome-extra/gnome-browser-connector
 *sys-apps/baobab
 *net-misc/vinagre
 *media-sound/alsa-utils
@@ -42,3 +44,4 @@
 *x11-themes/adwaita-qt
 *app-i18n/uchardet
 *media-fonts/droid
+*media-fonts/noto
