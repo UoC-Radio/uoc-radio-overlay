@@ -44,3 +44,6 @@
 *media-fonts/noto
 *sys-apps/flatpak
 *sys-fs/fscrypt
+*sys-apps/kexec-tools
+*app-misc/tmux
+*sys-process/htop
