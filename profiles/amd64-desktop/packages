@@ -19,7 +19,6 @@
 *sys-fs/exfat-utils
 *sys-fs/btrfs-progs
 *sys-fs/btrfsmaintenance
-*sys-apps/hdparm
 *sys-auth/sssd
 *net-fs/nfs-utils
 *gnome-base/gnome-light
@@ -27,7 +26,6 @@
 *gnome-extra/gnome-system-monitor
 *gnome-extra/gnome-browser-connector
 *sys-apps/baobab
-*net-misc/vinagre
 *media-sound/alsa-utils
 *media-sound/jack2
 *media-sound/qjackctl
@@ -40,8 +38,6 @@
 *app-arch/file-roller
 *www-client/firefox
 *gnome-extra/gnome-tweaks
-*x11-themes/vertex-theme
-*x11-themes/adwaita-qt
-*app-i18n/uchardet
 *media-fonts/droid
 *media-fonts/noto
+*sys-apps/flatpak
