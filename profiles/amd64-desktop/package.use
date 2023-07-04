@@ -93,6 +93,9 @@ media-sound/qmmp ffmpeg qsui soxr
 media-sound/audacious qt5
 media-plugins/audacious-plugins ffmpeg -mp3 lame cue soxr fluidsynth qt5 mms libsamplerate http
 
+# Drop pulseaudio support from mpg123 to avoid circular dependency with libsndfile
+media-sound/mpg123 -pulseaudio
+
 # VLC, use ffmpeg, soxr
 media-video/vlc -libsamplerate -mp3 -mad -x264 qt5 bluray soxr cddb ffmpeg skins fluidsynth
 
