@@ -1,6 +1,9 @@
 # Add EFI support on systemd
 sys-apps/systemd gnuefi
 
+# Unfortunately it needs suid
+sys-fs/fuse suid
+
 # Enable libxml2 python bindings
 dev-libs/libxml2 python
 
