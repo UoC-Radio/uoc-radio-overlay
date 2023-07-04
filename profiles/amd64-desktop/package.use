@@ -122,6 +122,9 @@ media-sound/audacity ffmpeg
 # We want fpcalc from chromaprint
 media-libs/chromaprint tools
 
+# Fingerprint support on Picard (grabs chromaprint)
+media-sound/picard fingerprints
+
 # LMMS
 media-sound/lmms fluidsynth -portaudio
 media-libs/sdl-sound -mpeg
@@ -170,3 +173,5 @@ sys-fs/quota rpc
 dev-libs/libical vala
 dev-python/pillow webp
 dev-python/numpy lapack
+sys-libs/libcap static-libs
+dev-libs/libpcre2 pcre32

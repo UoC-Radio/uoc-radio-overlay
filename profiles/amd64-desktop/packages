@@ -51,3 +51,4 @@
 *sys-apps/lm-sensors
 *dev-python/virtualenvwrapper
 *x11-misc/x11vnc
+*sys-apps/ethtool
