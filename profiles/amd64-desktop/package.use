@@ -108,8 +108,15 @@ media-plugins/gst-plugins-meta -a52 -cdda -dts -dvd -x264 -mpeg ffmpeg opus lame
 # Icestreamer
 media-radio/icestreamer opus lame
 
-# Calf
+# Calf lv2 support (broken symlink for calf.so)
 media-plugins/calf lv2
+
+# Don't install standalone versions or we'll end up with a LOT of them
+# messing up the applications menu, stick to lv2
+media-libs/lsp-plugins -jack
+
+# Enable gtk2 bridge for carla
+media-sound/carla gtk2
 
 # Picard dependencies
 dev-qt/qtgui accessibility
