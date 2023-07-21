@@ -11,7 +11,7 @@ USE="${USE} vdpau vaapi opengl vulkan -qt4 -qt5 -gtk2"
 # Other media
 USE="${USE} gstreamer fftw"
 # Security stuff
-USE="${USE} caps filecaps acl -suid cacert ssl tls -skey hardened"
+USE="${USE} caps filecaps acl -suid cacert ssl tls -skey hardened verify-sig"
 
 VIDEO_CARDS="amdgpu fbdev i915 i965 intel nouveau radeon radeonsi r600 r300 qxl virgl"
 INPUT_DEVICES="keyboard libinput mouse evdev"
