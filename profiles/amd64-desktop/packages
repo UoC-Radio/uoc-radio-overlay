@@ -4,6 +4,7 @@
 *app-portage/eix
 *app-portage/gentoolkit
 *sys-kernel/linux-firmware
+*sys-firmware/intel-microcode
 *sys-apps/nvme-cli
 *sys-boot/efibootmgr
 *sys-apps/pciutils
