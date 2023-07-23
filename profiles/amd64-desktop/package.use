@@ -1,3 +1,6 @@
+# Don't use an initramfs for gentoo-kernel, use savedconfig
+sys-kernel/gentoo-kernel -initramfs savedconfig
+
 # Add EFI support on systemd
 sys-apps/systemd gnuefi
 
