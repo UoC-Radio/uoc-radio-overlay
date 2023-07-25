@@ -185,3 +185,4 @@ dev-python/pillow webp
 dev-python/numpy lapack
 sys-libs/libcap static-libs
 dev-libs/libpcre2 pcre32
+net-libs/gnutls pkcs11 tools
