@@ -1,6 +1,10 @@
 # Don't use an initramfs for gentoo-kernel, use savedconfig
 sys-kernel/gentoo-kernel -initramfs savedconfig
 
+# Don't get installkernel from debianutils, we'll install it
+# if needed seperately (or use installkernel-systemd-boot
+sys-apps/debianutils -installkernel
+
 # Add EFI support on systemd
 sys-apps/systemd gnuefi
 
