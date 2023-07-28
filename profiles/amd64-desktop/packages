@@ -49,6 +49,6 @@
 *app-misc/tmux
 *sys-process/htop
 *sys-apps/lm-sensors
-*dev-python/virtualenvwrapper
+*dev-python/poetry
 *x11-misc/x11vnc
 *sys-apps/ethtool

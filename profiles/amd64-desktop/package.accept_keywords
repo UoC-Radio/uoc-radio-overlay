@@ -24,3 +24,5 @@ media-sound/picard ~amd64
 net-wireless/gr-rds **
 net-wireless/gnuradio **
 sci-libs/volk **
+dev-python/poetry ~amd64
+app-office/onlyoffice-bin ~amd64
