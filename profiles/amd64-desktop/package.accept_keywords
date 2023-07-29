@@ -25,4 +25,5 @@ net-wireless/gr-rds **
 net-wireless/gnuradio **
 sci-libs/volk **
 dev-python/poetry ~amd64
+dev-python/poetry-plugin-export ~amd64
 app-office/onlyoffice-bin ~amd64
