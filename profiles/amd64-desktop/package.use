@@ -18,6 +18,9 @@ dev-libs/libxml2 python
 # and perl for send-email
 dev-vcs/git python perl
 
+# Allow pipewire to act as a Pulseaudio/Jack replacement
+media-video/pipewire flatpak ieee1394 jack-sdk sound-server
+
 # Build the client part of samba (needed for cups)
 # try to keep things clean, no need for python bindings
 # also remove fam.
