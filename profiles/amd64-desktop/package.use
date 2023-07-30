@@ -198,4 +198,4 @@ dev-libs/quazip qt5
 media-libs/libheif x265
 app-text/poppler qt5
 media-gfx/krita color-management webp openexr heif jpegxl
-
+dev-qt/qtgui eglfs
