@@ -195,4 +195,4 @@ dev-libs/libpcre2 pcre32
 net-libs/gnutls pkcs11 tools
 kde-frameworks/sonnet qml
 dev-libs/quazip qt5
-media-gfx/krita color-management webp
+media-gfx/krita color-management webp -pdf
