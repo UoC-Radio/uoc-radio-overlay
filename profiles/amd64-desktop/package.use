@@ -195,4 +195,7 @@ dev-libs/libpcre2 pcre32
 net-libs/gnutls pkcs11 tools
 kde-frameworks/sonnet qml
 dev-libs/quazip qt5
-media-gfx/krita color-management webp -pdf
+media-libs/libheif x265
+app-text/poppler qt5
+media-gfx/krita color-management webp openexr heif jpegxl
+
