@@ -29,7 +29,7 @@
 *gnome-extra/gnome-browser-connector
 *sys-apps/baobab
 *media-sound/alsa-utils
-*media-sound/qjackctl
+*media-sound/qpwgraph
 *x11-themes/adwaita-qt
 *app-editors/gedit
 *app-text/evince
