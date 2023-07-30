@@ -30,6 +30,7 @@
 *sys-apps/baobab
 *media-sound/alsa-utils
 *media-sound/qjackctl
+*x11-themes/adwaita-qt
 *app-editors/gedit
 *app-text/evince
 *media-gfx/gnome-screenshot
