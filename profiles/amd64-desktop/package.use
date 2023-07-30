@@ -21,6 +21,9 @@ dev-vcs/git python perl
 # Allow pipewire to act as a Pulseaudio/Jack replacement
 media-video/pipewire flatpak ieee1394 jack-sdk sound-server
 
+# Remove sysprof from mutter, if we want sysprof we'll merge it
+x11-wm/mutter -sysprof
+
 # Build the client part of samba (needed for cups)
 # try to keep things clean, no need for python bindings
 # also remove fam.
