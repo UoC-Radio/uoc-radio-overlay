@@ -106,14 +106,14 @@ media-sound/mpg123 -pulseaudio -sdl
 # VLC, use ffmpeg, soxr
 media-video/vlc -libsamplerate -mp3 -mad -x264 qt5 bluray soxr cddb ffmpeg skins fluidsynth
 
-# Audio-scheduler
-media-radio/audio-scheduler -aac
+# Audio-scheduler (disable jack so that we don't depend on jack2 through gst-plugins-jack)
+media-radio/audio-scheduler -aac -jack
 
 # Gstreamer plugins, use ffmpeg
 media-plugins/gst-plugins-meta -a52 -cdda -dts -dvd -x264 -mpeg ffmpeg opus lame
 
-# Icestreamer
-media-radio/icestreamer opus lame
+# Icestreamer (disable jack so that we don't depend on jack2 through gst-plugins-jack)
+media-radio/icestreamer opus lame -jack
 
 # Calf lv2 support (broken symlink for calf.so)
 media-plugins/calf lv2
