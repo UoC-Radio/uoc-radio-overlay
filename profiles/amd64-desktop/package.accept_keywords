@@ -1,5 +1,3 @@
-media-libs/fontconfig-ultimate ~amd64
-dev-qt/qtstyleplugins ~amd64
 media-fonts/heuristica ~amd64
 media-fonts/courier-prime ~amd64
 media-fonts/signika ~amd64
@@ -31,3 +29,4 @@ dev-python/deepdiff ~amd64
 app-office/onlyoffice-bin ~amd64
 media-video/pipewire ~amd64
 media-video/wireplumber ~amd64
+media-sound/qpwgraph ~amd64
