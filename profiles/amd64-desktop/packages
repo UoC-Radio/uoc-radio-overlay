@@ -31,7 +31,7 @@
 *media-sound/alsa-utils
 *media-sound/qpwgraph
 *x11-themes/adwaita-qt
-*app-editors/gedit
+*app-editors/gnome-text-editor
 *app-text/evince
 *media-gfx/gnome-screenshot
 *media-gfx/eog

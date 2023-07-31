@@ -22,7 +22,11 @@ dev-vcs/git python perl
 media-video/pipewire flatpak ieee1394 jack-sdk sound-server
 
 # Remove sysprof from mutter, if we want sysprof we'll merge it
-x11-wm/mutter -sysprof
+# also enable screencasting
+x11-wm/mutter -sysprof screencast
+
+# Enable server functionality on freerdp
+net-misc/freerdp server
 
 # Build the client part of samba (needed for cups)
 # try to keep things clean, no need for python bindings
