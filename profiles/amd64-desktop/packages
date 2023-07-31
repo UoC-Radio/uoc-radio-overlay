@@ -5,6 +5,7 @@
 *app-portage/gentoolkit
 *sys-kernel/linux-firmware
 *sys-firmware/intel-microcode
+*gnome-extra/gnome-firmware
 *sys-apps/nvme-cli
 *sys-boot/efibootmgr
 *sys-apps/pciutils
@@ -12,6 +13,7 @@
 *sys-apps/dmidecode
 *sys-process/lsof
 *sys-process/htop
+*sys-process/iotop
 *sys-apps/irqbalance
 *sys-auth/rtkit
 *sys-fs/dosfstools
@@ -50,5 +52,6 @@
 *sys-process/htop
 *sys-apps/lm-sensors
 *dev-python/poetry
-*x11-misc/x11vnc
+*net-misc/gnome-connections
+*net-misc/gnome-remote-desktop
 *sys-apps/ethtool
