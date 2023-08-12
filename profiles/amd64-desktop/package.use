@@ -181,6 +181,9 @@ x11-libs/gtk+ broadway
 # Needed by ardour
 media-libs/suil gtk2
 
+# Needed for vmware driver
+media-libs/mesa xa
+
 # Gnuradio stuff
 net-wireless/gnuradio grc qt5
 
