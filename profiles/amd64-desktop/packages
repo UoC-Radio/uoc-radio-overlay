@@ -22,7 +22,6 @@
 *sys-fs/exfat-utils
 *sys-fs/btrfs-progs
 *sys-fs/btrfsmaintenance
-*sys-auth/sssd
 *net-fs/nfs-utils
 *net-firewall/nftables
 *gnome-base/gnome-light
