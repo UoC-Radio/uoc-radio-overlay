@@ -6,7 +6,7 @@ sys-kernel/gentoo-kernel -initramfs savedconfig
 sys-apps/debianutils -installkernel
 
 # Add EFI support on systemd
-sys-apps/systemd gnuefi boot
+sys-apps/systemd gnuefi boot kernel-install
 
 # Unfortunately it needs suid
 sys-fs/fuse suid
