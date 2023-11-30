@@ -33,3 +33,4 @@ media-sound/qpwgraph ~amd64
 net-misc/gnome-connections ~amd64
 net-misc/gnome-remote-desktop ~amd64
 dev-libs/libei ~amd64
+dev-python/cleo ~amd64
