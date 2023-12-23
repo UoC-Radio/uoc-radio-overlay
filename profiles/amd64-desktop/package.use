@@ -173,7 +173,8 @@ sys-libs/glibc nscd
 app-emulation/libvirt nfs virt-network fuse
 app-emulation/qemu spice usbredir vde virgl virtfs
 net-misc/spice-gtk usbredir
-net-dns/dnsmasq script
+# also add tftp support
+net-dns/dnsmasq script tftp
 
 # Enable the broadway backend for GTK
 x11-libs/gtk+ broadway
