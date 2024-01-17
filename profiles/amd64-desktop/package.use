@@ -114,7 +114,7 @@ media-plugins/audacious-plugins ffmpeg -mp3 lame cue soxr fluidsynth qt5 mms lib
 media-sound/mpg123 -pulseaudio -sdl
 
 # VLC, use ffmpeg, soxr
-media-video/vlc -libsamplerate -mp3 -mad -x264 qt5 bluray soxr cddb ffmpeg skins fluidsynth
+media-video/vlc -libsamplerate -mp3 -mad -x264 qt5 bluray soxr cddb ffmpeg skins fluidsynth archive
 
 # Audio-scheduler (disable jack so that we don't depend on jack2 through gst-plugins-jack)
 media-radio/audio-scheduler -aac -jack
