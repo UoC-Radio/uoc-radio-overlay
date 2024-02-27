@@ -2,11 +2,12 @@
 sys-kernel/gentoo-kernel -initramfs savedconfig
 
 # Don't get installkernel from debianutils, we'll install it
-# if needed seperately (or use installkernel-systemd-boot
+# if needed seperately
 sys-apps/debianutils -installkernel
 
 # Add EFI support on systemd
 sys-apps/systemd gnuefi boot kernel-install
+sys-kernel/installkernel systemd-boot
 
 # Unfortunately it needs suid
 sys-fs/fuse suid
