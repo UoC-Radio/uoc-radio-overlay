@@ -11,5 +11,5 @@ ACCT_USER_HOME=/home/studiouser
 ACCT_USER_HOME_OWNER=1001:users
 ACCT_USER_HOME_PERMS=0755
 ACCT_USER_SHELL=/bin/bash
-ACCT_USER_GROUPS=( users audio video cdrom wheel pipewire )
+ACCT_USER_GROUPS=( users audio video cdrom wheel pipewire realtime )
 acct-user_add_deps
