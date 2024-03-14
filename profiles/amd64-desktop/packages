@@ -51,6 +51,4 @@
 *sys-process/htop
 *sys-apps/lm-sensors
 *dev-python/poetry
-*net-misc/gnome-connections
-*net-misc/gnome-remote-desktop
 *sys-apps/ethtool
