@@ -214,3 +214,4 @@ dev-qt/qtgui eglfs
 app-admin/keepassxc yubikey
 x11-libs/qwt qt5
 x11-themes/adwaita-qt qt5
+x11-themes/QGnomePlatform qt5
