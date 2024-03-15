@@ -1,2 +1,0 @@
->=net-misc/gnome-connections-45.0
->=net-misc/gnome-remote-desktop-45.0
