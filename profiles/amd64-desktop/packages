@@ -52,3 +52,4 @@
 *sys-apps/lm-sensors
 *dev-python/poetry
 *sys-apps/ethtool
+*net-misc/gnome-remote-desktop
