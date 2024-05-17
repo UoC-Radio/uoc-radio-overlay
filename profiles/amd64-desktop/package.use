@@ -12,6 +12,8 @@ app-arch/p7zip -wxwidgets
 
 # Don't use an initramfs for gentoo-kernel, use savedconfig
 sys-kernel/gentoo-kernel -initramfs savedconfig
+sys-kernel/linux-firmware -initramfs
+sys-firmware/intel-microcode -initramfs
 
 # Don't get installkernel from debianutils, we'll install it
 # if needed seperately
