@@ -1,22 +1,33 @@
+# CPU stuff (don't override those on make.conf!)
+
+# These warnings indicate likely runtime problems with LTO, so promote them
+# to errors. If a package fails to build with these, LTO should not be used there.
+CPU_FLAGS_X86="mmx mmxext sse sse2 sse3 ssse3 sse4_1 sse4_2 popcnt"
+WARNING_FLAGS="-Werror=odr -Werror=lto-type-mismatch -Werror=strict-aliasing"
+LTO_FLAGS="-flto ${WARNING_FLAGS}"
+COMMON_FLAGS="-march=x86-64-v2 -mtune=generic -O2 -pipe ${LTO_FLAGS}"
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${COMMON_FLAGS}"
+FCFLAGS="${COMMON_FLAGS}"
+FFLAGS="${COMMON_FLAGS}"
+
 # Distro stuff
-USE="${USE} bindist unicode"
-# Desktop environment
-USE="${USE} -kde wayland -gnome-online-accounts networkmanager fontconfig ibus"
-# Browser stuff
-USE="${USE} mozilla nsplugin -webkit"
+USE="${USE} bindist unicode branding lto"
+# Security stuff
+USE="${USE} caps filecaps acl -suid hardened verify-sig cacert"
+# Desktop environment (enable qt when needed per-package)
+USE="${USE} gnome -kde -qt4 -qt5 -qt6 -gtk2 wayland fontconfig"
 # Audio
 USE="${USE} jack pipewire"
-# Graphics (enable gtk2/qt5 per package)
-USE="${USE} vdpau vaapi opengl vulkan -qt4 -qt5 -gtk2"
-# Other media
-USE="${USE} gstreamer fftw"
-# Security stuff
-USE="${USE} caps filecaps acl -suid cacert ssl tls -skey hardened verify-sig"
+# Graphics
+USE="${USE} vdpau vaapi vulkan"
+# Misc
+USE="${USE} fftw -sysprof"
 
+# Hw support
 VIDEO_CARDS="amdgpu fbdev i915 i965 intel nouveau radeon radeonsi r600 r300 virgl vmware"
-INPUT_DEVICES="keyboard libinput mouse evdev"
 
-CPU_FLAGS_X86="mmx mmxext sse sse2 sse3 ssse3 sse4_1 sse4_2"
+INPUT_DEVICES="keyboard libinput mouse evdev"
 
 QEMU_SOFTMMU_TARGETS="x86_64 aarch64 riscv32 riscv64"
 QEMU_USER_TARGETS="aarch64 riscv32 riscv64"

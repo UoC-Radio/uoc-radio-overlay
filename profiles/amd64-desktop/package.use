@@ -1,3 +1,15 @@
+################
+# System stuff #
+################
+
+# Enable python bindings for git
+# and perl for send-email
+dev-vcs/git python perl
+
+app-text/evince djvu dvi postscript -spell
+
+app-arch/p7zip -wxwidgets
+
 # Don't use an initramfs for gentoo-kernel, use savedconfig
 sys-kernel/gentoo-kernel -initramfs savedconfig
 
@@ -9,25 +21,42 @@ sys-apps/debianutils -installkernel
 sys-apps/systemd gnuefi boot kernel-install
 sys-kernel/installkernel systemd-boot
 
+# Build su with suid bit
+sys-apps/util-linux suid
+
 # Unfortunately it needs suid
 sys-fs/fuse suid
 
-# Enable libxml2 python bindings
-dev-libs/libxml2 python
+# Needed for flatpack
+dev-util/ostree curl
 
-# Enable python bindings for git
-# and perl for send-email
-dev-vcs/git python perl
+# Wireless extensions are obsolete
+net-misc/networkmanager -wext
 
-# Allow pipewire to act as a Pulseaudio/Jack replacement
-media-video/pipewire flatpak ieee1394 jack-sdk sound-server
+# Extra wireshark functionality
+net-analyzer/wireshark wifi
 
-# Remove sysprof from mutter, if we want sysprof we'll merge it
-# also enable screencasting
-x11-wm/mutter -sysprof screencast
+# Enable utils flag on nss so that libreswan can use it
+dev-libs/nss utils
 
-# Enable server functionality on freerdp
-net-misc/freerdp server
+# Brings in gtk2 for no reason
+net-dialup/ppp -gtk
+
+#net-wireless/bluez -mesh
+
+# libvirt stuff
+app-emulation/libvirt nfs virt-network fuse
+app-emulation/qemu spice usbredir vde virgl virtfs
+
+# also add tftp support
+net-dns/dnsmasq script tftp
+
+# Needed for vmware driver
+media-libs/mesa xa
+
+########################
+# Services / Web stuff #
+########################
 
 # Build the client part of samba (needed for cups)
 # try to keep things clean, no need for python bindings
@@ -35,11 +64,35 @@ net-misc/freerdp server
 net-fs/samba client -python -fam
 sys-libs/ldb -python
 
-# Build su with suid bit
-sys-apps/util-linux suid
+# It needs OpenSSL without the bindist flag which breaks other stuff
+net-libs/nodejs system-ssl ssl -npm
+net-libs/nghttp2 -cxx
 
-# Add samba / fuse support to gvfs
-gnome-base/gvfs samba fuse
+# Needed by sssd
+net-nds/openldap sasl
+net-dns/bind-tools gssapi
+dev-libs/cyrus-sasl kerberos
+
+net-p2p/deluge webinterface
+net-libs/libtorrent-rasterbar python
+
+#################
+# Desktop stuff #
+#################
+
+# Keep things clean when installing mozilla apps
+mail-client/thunderbird system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite lto
+www-client/firefox system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite hwaccel lto
+dev-db/sqlite secure-delete
+media-libs/libvpx postproc
+dev-lang/rust system-llvm
+
+# Remove sysprof from mutter, if we want sysprof we'll merge it
+# also enable screencasting
+x11-wm/mutter -sysprof screencast
+
+# Enable server functionality on freerdp
+net-misc/freerdp server
 
 # Also brings in gamin (fam), glib will use inotify
 dev-libs/glib -fam
@@ -50,6 +103,9 @@ gnome-base/nautilus -previewer
 # Desktop environment theme
 x11-themes/gtk-engines-murrine -themes
 x11-themes/vertex-theme gnome-shell
+kde-frameworks/sonnet qml
+x11-themes/adwaita-qt qt5
+x11-themes/QGnomePlatform qt5
 
 # Needed for libappindicator
 dev-libs/libdbusmenu gtk3
@@ -57,43 +113,24 @@ dev-libs/libdbusmenu gtk3
 # Needed for wayland / wine
 media-libs/libsdl2 gles2 kms haptic
 
-# Needed for flatpack
-dev-util/ostree curl
-
 # Needed for pango/ardour
 media-libs/freetype harfbuzz
 
-# Keep things clean when installing mozilla apps
-mail-client/thunderbird system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite lto
-www-client/firefox system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite hwaccel lto
-dev-db/sqlite secure-delete
-media-libs/libvpx postproc
-dev-lang/rust system-llvm
+# Signature support for PDFs on poppler
+app-text/poppler nss
 
-# It needs OpenSSL without the bindist flag which breaks other stuff
-net-libs/nodejs system-ssl ssl -npm
-net-libs/nghttp2 -cxx
+net-misc/spice-gtk usbredir
 
-# Enable utils flag on nss so that libreswan can use it
-dev-libs/nss utils
+app-admin/keepassxc yubikey
 
-# Enable cpudetection and extra codecs
-media-video/ffmpeg cpudetection openssl opus vpx webp x265 opus theora speex libsoxr gmp cdio gnutls bluray ladspa modplug wavpack
+# Add samba / fuse support to gvfs, get rid of gnome-online-accounts
+gnome-base/gvfs samba fuse -gnome-online-accounts
+gnome-base/gnome-control-center -gnome-online-accounts
+gnome-extra/evolution-data-server -gnome-online-accounts
 
-# Wireless extensions are obsolete
-net-misc/networkmanager -wext
-
-# Brings in gtk2 for no reason
-net-dialup/ppp -gtk
-
-# Needed by vlc
-sys-libs/zlib minizip
-
-# Use ffmpeg for extra codecs
-media-sound/mixxx ffmpeg -mp3 -mp4 -aac
-
-# Needed by mixxx
-dev-qt/qtscript scripttools
+###################
+# Audio/mastering #
+###################
 
 # Add ffado support on jack, also libsamplerate is needed for example-tools
 media-sound/jack2 ieee1394 libsamplerate
@@ -101,48 +138,85 @@ media-sound/jack2 ieee1394 libsamplerate
 # Build some extra jack clients to use/experiment with
 media-sound/jack-example-tools alsa jack-net jack-netsource zalsa opus
 
-# Goes together with the opus use flag above
-media-libs/opus custom-modes
+# Allow pipewire to act as a Pulseaudio/Jack replacement
+media-video/pipewire flatpak ieee1394 jack-sdk sound-server
 
-# Qmmp
-media-sound/qmmp ffmpeg qsui soxr
-
-# Audacious use ffmpeg backend and lame, drop mpg123
-media-sound/audacious qt5
-media-plugins/audacious-plugins ffmpeg -mp3 lame cue soxr fluidsynth qt5 mms libsamplerate http
-
-# Drop pulse/sdl support from mpg123 to avoid circular dependency with libsndfile
-media-sound/mpg123 -pulseaudio -sdl
-
-# VLC, use ffmpeg, soxr
-media-video/vlc -libsamplerate -mp3 -mad -x264 qt5 bluray soxr cddb ffmpeg skins fluidsynth archive
-
-# Audio-scheduler (disable jack so that we don't depend on jack2 through gst-plugins-jack)
-media-radio/audio-scheduler -aac -jack
+# Enable cpudetection and extra codecs
+media-video/ffmpeg cpudetection openssl opus vpx webp x265 opus theora speex libsoxr gmp cdio gnutls bluray ladspa modplug wavpack
 
 # Gstreamer plugins, use ffmpeg
 media-plugins/gst-plugins-meta -a52 -cdda -dts -dvd -x264 -mpeg ffmpeg opus lame
 
-# Icestreamer (disable jack so that we don't depend on jack2 through gst-plugins-jack)
-media-radio/icestreamer opus lame -jack
-
-# Calf lv2 support (broken symlink for calf.so)
-media-plugins/calf lv2
+# Goes together with the opus use flag above
+media-libs/opus custom-modes
 
 # Don't install standalone versions or we'll end up with a LOT of them
 # messing up the applications menu, stick to lv2
 media-libs/lsp-plugins -jack
 
+# Enable lv2 version of calf plugins (note: missing symlink)
+media-plugins/calf lv2
+
+# Drop pulse/sdl support from mpg123 to avoid circular dependency with libsndfile
+media-sound/mpg123 -pulseaudio -sdl
+
 # Enable gtk2 bridge for carla
 media-sound/carla gtk2
+
+###############
+# Radio stuff #
+###############
+
+# Audio-scheduler (disable jack so that we don't depend on jack2 through gst-plugins-jack)
+media-radio/audio-scheduler -aac -jack
+
+# Icestreamer (disable jack so that we don't depend on jack2 through gst-plugins-jack)
+media-radio/icestreamer opus lame -jack
+
+# Gnuradio stuff
+net-wireless/gnuradio grc qt5
+x11-libs/qwt qt5
+
+#########################
+# Media players/editors #
+#########################
+
+# Audacious use ffmpeg backend and lame, drop mpg123
+media-sound/audacious qt5
+media-plugins/audacious-plugins ffmpeg -mp3 lame cue soxr fluidsynth qt5 mms libsamplerate http
+
+# Use ffmpeg for extra codecs
+media-sound/mixxx ffmpeg -mp3 -mp4 -aac
+
+# Needed by mixxx
+dev-qt/qtscript scripttools
+
+# VLC, use ffmpeg, soxr
+media-video/vlc -libsamplerate -mp3 -mad -x264 qt5 bluray soxr cddb ffmpeg skins fluidsynth archive
+
+# Needed by vlc
+sys-libs/zlib minizip
+
+# VLC support on libreoffice
+app-office/libreoffice vlc
+
+# Qmmp
+media-sound/qmmp ffmpeg qsui soxr
+
+# Enable ffmpeg support for audacity
+media-sound/audacity ffmpeg
+
+# Needed by ardour
+media-libs/suil gtk2
+
+########################
+# Media metadata stuff #
+########################
 
 # Picard dependencies
 dev-qt/qtgui accessibility
 dev-qt/qtmultimedia widgets
 dev-python/PyQt5 declarative -printsupport -bluetooth multimedia
-
-# Enable ffmpeg support for audacity
-media-sound/audacity ffmpeg
 
 # We want fpcalc from chromaprint
 media-libs/chromaprint tools
@@ -150,54 +224,19 @@ media-libs/chromaprint tools
 # Fingerprint support on Picard (grabs chromaprint)
 media-sound/picard fingerprints
 
-# LMMS
-media-sound/lmms fluidsynth -portaudio
-media-libs/sdl-sound -mpeg
+# Enable libxml2 python bindings
+dev-libs/libxml2 python
 
-# VLC support on libreoffice
-app-office/libreoffice vlc
+media-video/mediainfo -wxwidgets
 
-# Signature support for PDFs on poppler
-app-text/poppler nss
-
-# Get rid of telepathy dependency for remote desktop
-net-misc/vino -telepathy
-net-misc/vinagre -telepathy
-
-# Needed by sssd
-net-nds/openldap sasl
-net-dns/bind-tools gssapi
-dev-libs/cyrus-sasl kerberos
-sys-libs/glibc nscd
-
-# libvirt stuff
-app-emulation/libvirt nfs virt-network fuse
-app-emulation/qemu spice usbredir vde virgl virtfs
-net-misc/spice-gtk usbredir
-# also add tftp support
-net-dns/dnsmasq script tftp
-
-# Enable the broadway backend for GTK
-x11-libs/gtk+ broadway
-
-# Needed by ardour
-media-libs/suil gtk2
-
-# Needed for vmware driver
-media-libs/mesa xa
-
-# Gnuradio stuff
-net-wireless/gnuradio grc qt5
+########
+# Misc #
+########
 
 dev-libs/boost python
-net-libs/libtorrent-rasterbar python
-net-p2p/deluge webinterface
 sci-libs/fftw threads
-media-video/mediainfo -wxwidgets
 app-arch/libarchive lz4 lzo zstd nettle expat
-app-text/evince djvu dvi postscript -spell
 app-misc/tracker-miners cue
-net-wireless/bluez -mesh
 sys-fs/quota rpc
 dev-libs/libical vala
 dev-python/pillow webp
@@ -205,13 +244,5 @@ dev-python/numpy lapack
 sys-libs/libcap static-libs
 dev-libs/libpcre2 pcre32
 net-libs/gnutls pkcs11 tools
-kde-frameworks/sonnet qml
-dev-libs/quazip qt5
-media-libs/libheif x265
-app-text/poppler qt5
-media-gfx/krita color-management webp openexr heif jpegxl
 dev-qt/qtgui eglfs
-app-admin/keepassxc yubikey
-x11-libs/qwt qt5
-x11-themes/adwaita-qt qt5
-x11-themes/QGnomePlatform qt5
+
