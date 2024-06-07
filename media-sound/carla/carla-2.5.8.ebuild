@@ -1,32 +1,31 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
-inherit python-single-r1 xdg
-
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/falkTX/Carla.git"
-	EGIT_SUBMODULES=() # Prevent Carla-Plugins from installing
-else
-	SRC_URI="https://github.com/falkTX/Carla/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 x86"
-	MY_PN="Carla"
-	MY_P="${MY_PN}-${PV}"
-	S="${WORKDIR}/${MY_P}"
-fi
+PYTHON_COMPAT=( python3_{10,11,12} )
+inherit python-single-r1 xdg-utils
 
 DESCRIPTION="Fully-featured audio plugin host, supports many audio drivers and plugin formats"
-HOMEPAGE="https://kx.studio/Applications:Carla"
+HOMEPAGE="http://kxstudio.linuxaudio.org/Applications:Carla"
+if [[ ${PV} == *9999 ]]; then
+	# Disable submodules to prevent external plugins from being built and installed
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/falkTX/Carla.git"
+	EGIT_SUBMODULES=()
+else
+	SRC_URI="https://github.com/falkTX/Carla/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	RESTRICT="mirror"
+	KEYWORDS="~amd64"
+	S="${WORKDIR}/Carla-${PV}"
+fi
 LICENSE="GPL-2 LGPL-3"
 SLOT="0"
+
 IUSE="alsa gtk gtk2 opengl osc pulseaudio rdf sf2 sndfile X"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="
-	${PYTHON_DEPS}
+RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/PyQt5[gui,opengl?,svg,widgets,${PYTHON_USEDEP}]')
 	virtual/jack
 	alsa? ( media-libs/alsa-lib )
@@ -36,14 +35,12 @@ DEPEND="
 		media-libs/liblo
 		media-libs/pyliblo
 	)
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	rdf? ( dev-python/rdflib )
 	sf2? ( media-sound/fluidsynth )
 	sndfile? ( media-libs/libsndfile )
-	X? ( x11-libs/libX11 )
-"
-RDEPEND="${DEPEND}"
-BDEPEND="${DEPEND}"
+	X? ( x11-base/xorg-server )"
+DEPEND=${RDEPEND}
 
 src_prepare() {
 	sed -i -e "s|exec \$PYTHON|exec ${PYTHON}|" \
@@ -55,7 +52,6 @@ src_prepare() {
 		data/carla-patchbay \
 		data/carla-rack \
 		data/carla-settings || die "sed failed"
-	sed -i "s;/share/appdata;/share/metainfo;g" "${S}/Makefile" || die "sed failed"
 	default
 }
 
@@ -91,4 +87,16 @@ src_install() {
 	if ! use osc; then
 		find "${D}/usr" -iname "carla-control*" | xargs rm
 	fi
+}
+
+pkg_postinst() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
