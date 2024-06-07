@@ -2,11 +2,6 @@
 # System stuff #
 ################
 
-# Stick to python 3.11 for now
-# https://www.gentoo.org/support/news-items/2024-05-09-python3-12.html
-*/* PYTHON_TARGETS: -* python3_11 python3_12
-*/* PYTHON_SINGLE_TARGET: -* python3_11
-
 # Enable python bindings for git
 # and perl for send-email
 dev-vcs/git python perl
