@@ -111,7 +111,7 @@ x11-themes/vertex-theme gnome-shell
 kde-frameworks/sonnet qml
 x11-themes/adwaita-qt qt5
 x11-themes/QGnomePlatform qt5
-sys-auth/polkit-qt qt5
+kde-frameworks/kauth -policykit
 
 # Needed for libappindicator
 dev-libs/libdbusmenu gtk3
