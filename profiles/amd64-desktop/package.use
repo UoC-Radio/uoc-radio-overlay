@@ -169,6 +169,9 @@ media-sound/mpg123 -pulseaudio -sdl
 # Enable gtk2 bridge for carla
 media-sound/carla gtk2
 
+# Needed for flacon
+media-sound/sox wavpack
+
 ###############
 # Radio stuff #
 ###############
