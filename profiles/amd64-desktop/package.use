@@ -185,6 +185,7 @@ media-radio/icestreamer opus lame -jack
 # Gnuradio stuff
 net-wireless/gnuradio grc qt5
 x11-libs/qwt qt5
+dev-python/pyqtgraph qt5
 
 #########################
 # Media players/editors #
@@ -225,7 +226,7 @@ media-libs/suil gtk2
 # Picard dependencies
 dev-qt/qtgui accessibility
 dev-qt/qtmultimedia widgets
-dev-python/PyQt5 declarative -printsupport -bluetooth multimedia
+dev-python/pyqt5 declarative -printsupport -bluetooth multimedia
 
 # We want fpcalc from chromaprint
 media-libs/chromaprint tools
