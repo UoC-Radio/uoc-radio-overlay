@@ -26,6 +26,7 @@ dev-python/poetry ~amd64
 dev-python/poetry-plugin-export ~amd64
 dev-python/shellingham ~amd64
 dev-python/deepdiff ~amd64
+dev-python/pkginfo ~amd64
 app-office/onlyoffice-bin ~amd64
 media-video/pipewire ~amd64
 media-video/wireplumber ~amd64
