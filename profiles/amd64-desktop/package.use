@@ -176,11 +176,11 @@ media-sound/sox wavpack
 # Radio stuff #
 ###############
 
-# Audio-scheduler (disable jack so that we don't depend on jack2 through gst-plugins-jack)
-media-radio/audio-scheduler -aac -jack
+# Audio-scheduler
+media-radio/audio-scheduler -aac jack
 
-# Icestreamer (disable jack so that we don't depend on jack2 through gst-plugins-jack)
-media-radio/icestreamer opus lame -jack
+# Icestreamer
+media-radio/icestreamer opus lame jack
 
 # Gnuradio stuff
 net-wireless/gnuradio grc qt5
