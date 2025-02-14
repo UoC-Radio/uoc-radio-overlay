@@ -144,8 +144,8 @@ media-sound/jack2 libsamplerate
 # Build some extra jack clients to use/experiment with
 media-sound/jack-example-tools alsa jack-net jack-netsource zalsa opus
 
-# Allow pipewire to act as a Pulseaudio/Jack replacement
-media-video/pipewire flatpak jack-sdk sound-server
+# Allow pipewire to act as a Pulseaudio/Jack replacement, lv2 host, streamer etc ffmpeg
+media-video/pipewire flatpak jack-sdk sound-server zeroconf lv2 roc
 
 # Enable cpudetection and extra codecs
 media-video/ffmpeg cpudetection openssl opus vpx webp x265 opus theora speex libsoxr gmp cdio gnutls bluray ladspa modplug wavpack
