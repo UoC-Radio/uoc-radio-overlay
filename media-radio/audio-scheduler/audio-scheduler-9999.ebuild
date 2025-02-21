@@ -13,11 +13,10 @@ EGIT_REPO_URI="https://github.com/UoC-Radio/audio-scheduler.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug jack pulseaudio alsa flac opus vorbis aac mp3 pipewire"
-DEPEND=">=media-plugins/gst-plugins-meta-1.10.0[jack?,pulseaudio?,alsa?,flac?,opus?,vorbis?,aac?,mp3?]
-	pipewire? ( >=media-video/pipewire-0.3.75 )
-	>=media-libs/gst-plugins-bad-1.10.0
-	>=dev-libs/libxml2-2.9.0"
+IUSE="debug opus vorbis mp3"
+DEPEND=">=media-video/ffmpeg-6.0.0[mp3?,opus?,vorbis?,libsoxr]
+	>=media-video/pipewire-1.2.0
+	>=dev-libs/libxml2-2.12.0"
 RDEPEND=${DEPEND}
 
 src_prepare() {
