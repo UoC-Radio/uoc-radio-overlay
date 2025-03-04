@@ -69,8 +69,7 @@ sys-libs/ldb -python
 # Enable avahi support on cups for printer discovery
 net-print/cups zeroconf
 
-# It needs OpenSSL without the bindist flag which breaks other stuff
-net-libs/nodejs system-ssl ssl -npm
+net-libs/nodejs system-ssl ssl npm
 net-libs/nghttp2 -cxx
 
 # Needed by sssd
