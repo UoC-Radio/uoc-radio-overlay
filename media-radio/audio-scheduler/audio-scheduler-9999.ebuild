@@ -13,8 +13,8 @@ EGIT_REPO_URI="https://github.com/UoC-Radio/audio-scheduler.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug opus vorbis mp3"
-DEPEND=">=media-video/ffmpeg-6.0.0[mp3?,opus?,vorbis?,libsoxr]
+IUSE="debug opus vorbis lame"
+DEPEND=">=media-video/ffmpeg-6.0.0[lame?,opus?,vorbis?,libsoxr]
 	>=media-video/pipewire-1.2.0
 	>=dev-libs/libxml2-2.12.0"
 RDEPEND=${DEPEND}

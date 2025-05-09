@@ -147,7 +147,7 @@ media-sound/jack-example-tools alsa jack-net jack-netsource zalsa opus
 media-video/pipewire flatpak jack-sdk sound-server zeroconf lv2 roc
 
 # Enable cpudetection and extra codecs
-media-video/ffmpeg cpudetection openssl opus vpx webp x265 opus theora speex libsoxr gmp cdio gnutls bluray ladspa modplug wavpack
+media-video/ffmpeg cpudetection openssl opus vpx webp x265 opus theora speex libsoxr gmp cdio gnutls bluray ladspa modplug wavpack lame
 
 # Gstreamer plugins, use ffmpeg
 media-plugins/gst-plugins-meta -a52 -cdda -dts -dvd -x264 -mpeg ffmpeg opus lame
