@@ -41,4 +41,4 @@ media-libs/aubio ~amd64
 dev-python/poetry ~amd64
 dev-python/poetry-core ~amd64
 dev-python/findpython ~amd64
-dev-python/pbs-installer- ~amd64
+dev-python/pbs-installer ~amd64
