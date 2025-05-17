@@ -38,3 +38,4 @@ dev-python/cleo ~amd64
 www-apps/element ~amd64
 media-sound/carla ~amd64
 media-libs/aubio ~amd64
+dev-python/poetry ~amd64
