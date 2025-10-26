@@ -14,9 +14,9 @@ FFLAGS="${COMMON_FLAGS}"
 # Distro stuff
 USE="${USE} bindist unicode branding lto"
 # Security stuff
-USE="${USE} caps filecaps acl -suid hardened verify-sig cacert"
+USE="${USE} caps filecaps acl -suid hardened verify-sig"
 # Desktop environment (enable qt when needed per-package)
-USE="${USE} gnome -kde -qt4 -qt5 -qt6 -gtk2 wayland fontconfig"
+USE="${USE} gnome -kde -qt5 -qt6 -wxwidgets wayland fontconfig"
 # Audio
 USE="${USE} jack pipewire"
 # Graphics

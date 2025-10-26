@@ -3,24 +3,18 @@
 ################
 
 # Enable python bindings for git
-# and perl for send-email
-dev-vcs/git python perl
+# (now by default) and perl for send-email
+dev-vcs/git perl
 
 app-text/evince djvu dvi postscript -spell
-
-app-arch/p7zip -wxwidgets
 
 # Don't use an initramfs for gentoo-kernel, use savedconfig
 sys-kernel/gentoo-kernel -initramfs savedconfig
 sys-kernel/linux-firmware -initramfs
 sys-firmware/intel-microcode -initramfs
 
-# Don't get installkernel from debianutils, we'll install it
-# if needed seperately
-sys-apps/debianutils -installkernel
-
 # Add EFI support on systemd
-sys-apps/systemd gnuefi boot kernel-install
+sys-apps/systemd boot kernel-install
 sys-kernel/installkernel systemd-boot
 
 # Build su with suid bit
@@ -56,6 +50,9 @@ net-dns/dnsmasq script tftp
 # Needed for vmware driver
 media-libs/mesa xa
 
+# Include cacert certificates
+app-misc/ca-certificates cacert
+
 ########################
 # Services / Web stuff #
 ########################
@@ -70,7 +67,6 @@ sys-libs/ldb -python
 net-print/cups zeroconf
 
 net-libs/nodejs system-ssl ssl npm
-net-libs/nghttp2 -cxx
 
 # Needed by sssd
 net-nds/openldap sasl
@@ -85,8 +81,8 @@ net-libs/libtorrent-rasterbar python
 #################
 
 # Keep things clean when installing mozilla apps
-mail-client/thunderbird system-cairo system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite lto
-www-client/firefox system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite hwaccel lto
+mail-client/thunderbird system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-pipewire hwaccel
+www-client/firefox system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite system-pipewire hwaccel
 dev-db/sqlite secure-delete
 media-libs/libvpx postproc
 dev-lang/rust system-llvm
@@ -97,9 +93,6 @@ x11-wm/mutter -sysprof screencast
 
 # Enable server functionality on freerdp
 net-misc/freerdp server
-
-# Also brings in gamin (fam), glib will use inotify
-dev-libs/glib -fam
 
 # Brings in webkit-gtk
 gnome-base/nautilus -previewer
@@ -146,8 +139,8 @@ media-sound/jack-example-tools alsa jack-net jack-netsource zalsa opus
 # Allow pipewire to act as a Pulseaudio/Jack replacement, lv2 host, streamer etc ffmpeg
 media-video/pipewire flatpak jack-sdk sound-server zeroconf lv2 roc
 
-# Enable cpudetection and extra codecs
-media-video/ffmpeg cpudetection openssl opus vpx webp x265 opus theora speex libsoxr gmp cdio gnutls bluray ladspa modplug wavpack lame
+# Enable extra codecs
+media-video/ffmpeg openssl opus vpx webp x265 opus theora speex libsoxr gmp cdio gnutls bluray ladspa modplug lame
 
 # Gstreamer plugins, use ffmpeg
 media-plugins/gst-plugins-meta -a52 -cdda -dts -dvd -x264 -mpeg ffmpeg opus lame
@@ -165,8 +158,8 @@ media-plugins/calf lv2
 # Drop pulse/sdl support from mpg123 to avoid circular dependency with libsndfile
 media-sound/mpg123 -pulseaudio -sdl
 
-# Enable gtk2 bridge for carla
-media-sound/carla gtk2
+# Enable gtk bridge for carla
+media-sound/carla gtk
 
 # Needed for flacon
 media-sound/sox wavpack
@@ -174,9 +167,6 @@ media-sound/sox wavpack
 ###############
 # Radio stuff #
 ###############
-
-# Audio-scheduler
-media-radio/audio-scheduler -aac jack
 
 # Icestreamer
 media-radio/icestreamer opus lame jack
@@ -191,8 +181,8 @@ dev-python/pyqtgraph qt5
 #########################
 
 # Audacious use ffmpeg backend and lame, drop mpg123
-media-sound/audacious qt5
-media-plugins/audacious-plugins ffmpeg -mp3 lame cue soxr fluidsynth qt5 mms libsamplerate http
+media-sound/audacious qt6
+media-plugins/audacious-plugins ffmpeg -mp3 lame cue soxr fluidsynth qt6 mms libsamplerate http
 
 # Use ffmpeg for extra codecs, lame for mp3 (for some reason they don't use ffmpeg for mp3)
 media-sound/mixxx ffmpeg mp3 opus shout lv2 midi -mp4 -aac
@@ -201,16 +191,13 @@ media-sound/mixxx ffmpeg mp3 opus shout lv2 midi -mp4 -aac
 dev-qt/qtscript scripttools
 
 # VLC, use ffmpeg, soxr, (temp: no vaapi so it gets latest ffmpeg)
-media-video/vlc -libsamplerate -mp3 -mad -x264 qt5 bluray soxr cddb ffmpeg skins fluidsynth archive -vaapi
+media-video/vlc -libsamplerate -mp3 -mad -x264 bluray soxr cddb ffmpeg skins fluidsynth archive -vaapi
 
 # Needed by vlc
 sys-libs/zlib minizip
 
-# VLC support on libreoffice
-app-office/libreoffice vlc
-
 # Qmmp
-media-sound/qmmp ffmpeg qsui soxr
+media-sound/qmmp ffmpeg pipewire soxr
 
 # Enable ffmpeg support for audacity
 media-sound/audacity ffmpeg
@@ -225,7 +212,7 @@ media-libs/suil gtk2
 # Picard dependencies
 dev-qt/qtgui accessibility
 dev-qt/qtmultimedia widgets
-dev-python/pyqt5 declarative -printsupport -bluetooth multimedia
+dev-python/pyqt5 declarative -printsupport multimedia
 
 # We want fpcalc from chromaprint
 media-libs/chromaprint tools
@@ -245,7 +232,6 @@ media-video/mediainfo -wxwidgets
 dev-libs/boost python
 sci-libs/fftw threads
 app-arch/libarchive lz4 lzo zstd nettle expat
-app-misc/tracker-miners cue
 sys-fs/quota rpc
 dev-libs/libical vala
 dev-python/pillow webp
