@@ -25,7 +25,7 @@ USE="${USE} vdpau vaapi vulkan"
 USE="${USE} fftw -sysprof"
 
 # Hw support
-VIDEO_CARDS="amdgpu fbdev i915 i965 intel nouveau radeon radeonsi r600 r300 virgl vmware"
+VIDEO_CARDS="amdgpu fbdev i915 i965 intel nouveau nvk radeon radeonsi r600 r300 virgl"
 
 INPUT_DEVICES="keyboard libinput mouse evdev"
 
