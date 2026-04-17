@@ -42,7 +42,8 @@ net-dialup/ppp -gtk
 
 # libvirt stuff
 app-emulation/libvirt nfs virt-network fuse
-app-emulation/qemu spice usbredir vde virgl virtfs
+app-emulation/qemu spice usbredir vde virgl virtfs smartcard
+app-emulation/spice smartcard
 
 # also add tftp support
 net-dns/dnsmasq script tftp
@@ -117,7 +118,7 @@ media-libs/freetype harfbuzz
 # Signature support for PDFs on poppler
 app-text/poppler nss
 
-net-misc/spice-gtk usbredir
+net-misc/spice-gtk usbredir smartcard
 
 app-admin/keepassxc yubikey
 
