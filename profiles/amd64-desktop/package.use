@@ -102,6 +102,7 @@ gnome-base/nautilus -previewer
 x11-themes/gtk-engines-murrine -themes
 x11-themes/vertex-theme gnome-shell
 kde-frameworks/sonnet qml
+x11-themes/adwaita-qt qt6
 kde-frameworks/kauth -policykit
 
 # Needed for libappindicator
