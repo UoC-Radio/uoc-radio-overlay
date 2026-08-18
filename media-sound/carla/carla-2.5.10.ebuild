@@ -27,7 +27,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_cond_dep 'dev-python/pyqt5[gui,opengl?,svg,widgets,${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/pyqt6[gui,opengl?,svg,widgets,${PYTHON_USEDEP}]')
 	virtual/jack
 	alsa? ( media-libs/alsa-lib )
 	gtk? ( x11-libs/gtk+:3 )
@@ -62,9 +62,10 @@ src_compile() {
 		HAVE_ZYN_DEPS=false
 		HAVE_ZYN_UI_DEPS=false
 		HAVE_QT4=false
-		HAVE_QT5=true
-		HAVE_PYQT5=true
-		DEFAULT_QT=5
+		HAVE_QT5=false
+		HAVE_QT6=true
+		HAVE_PYQT6=true
+		DEFAULT_QT=6
 		HAVE_ALSA=$(usex alsa true false)
 		HAVE_FLUIDSYNTH=$(usex sf2 true false)
 		HAVE_GTK3=$(usex gtk true false)
