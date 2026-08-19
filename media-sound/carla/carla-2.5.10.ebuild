@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
-inherit python-single-r1 xdg
+inherit python-single-r1 xdg-utils
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -22,23 +22,27 @@ DESCRIPTION="Fully-featured audio plugin host, supports many audio drivers and p
 HOMEPAGE="https://kx.studio/Applications:Carla"
 LICENSE="GPL-2 LGPL-3"
 SLOT="0"
-IUSE="alsa gtk opengl pulseaudio rdf sf2 sndfile X"
+IUSE="alsa gtk gtk2 opengl osc pulseaudio rdf sf2 sndfile X"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="
+RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/pyqt6[gui,opengl?,svg,widgets,${PYTHON_USEDEP}]')
 	virtual/jack
 	alsa? ( media-libs/alsa-lib )
 	gtk? ( x11-libs/gtk+:3 )
+	gtk2? ( x11-libs/gtk+:2 )
+	osc? (
+		media-libs/liblo
+		media-libs/pyliblo
+	)
 	pulseaudio? ( media-libs/libpulse )
 	rdf? ( dev-python/rdflib )
 	sf2? ( media-sound/fluidsynth )
 	sndfile? ( media-libs/libsndfile )
 	X? ( x11-libs/libX11 )
 "
-RDEPEND="${DEPEND}"
-BDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	sed -i -e "s|exec \$PYTHON|exec ${PYTHON}|" \
@@ -57,21 +61,6 @@ src_prepare() {
 src_compile() {
 	myemakeargs=(
 		LIBDIR="/usr/$(get_libdir)"
-		SKIP_STRIPPING=true
-		HAVE_FFMPEG=false
-		HAVE_ZYN_DEPS=false
-		HAVE_ZYN_UI_DEPS=false
-		HAVE_QT4=false
-		HAVE_QT5=false
-		HAVE_QT6=true
-		HAVE_PYQT6=true
-		DEFAULT_QT=6
-		HAVE_ALSA=$(usex alsa true false)
-		HAVE_FLUIDSYNTH=$(usex sf2 true false)
-		HAVE_GTK3=$(usex gtk true false)
-		HAVE_PULSEAUDIO=$(usex pulseaudio true false)
-		HAVE_SNDFILE=$(usex sndfile true false)
-		HAVE_X11=$(usex X true false)
 	)
 
 	# Print which options are enabled/disabled
@@ -82,6 +71,19 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="/usr" "${myemakeargs[@]}" install
-	find "${D}/usr" -iname "carla-control*" | xargs rm
+	if ! use osc; then
+		find "${D}/usr" -iname "carla-control*" | xargs rm
+	fi
 }
 
+pkg_postinst() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
